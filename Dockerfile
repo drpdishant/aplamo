@@ -28,9 +28,10 @@ RUN a2dissite 000-default.conf
 RUN a2ensite laravel.conf
 RUN a2enmod rewrite
 RUN service apache2 restart
-RUN service apache2 start
+COPY init.sh /init.sh
+RUN chmod +x /init.sh
 
 EXPOSE 80
 EXPOSE 443
 
-CMD tail -f /dev/null
+CMD /init.sh
