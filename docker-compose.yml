@@ -8,14 +8,17 @@ services:
         - 8000:80
         - 8443:443
         volumes:
-            - ./app:/var/www/html
+        - ./app:/var/www/html/app
+        - ./conf/laravel.conf:/etc/apache2/sites-available/laravel.conf
+
     mongo:
         image: mongo
         restart: always
         environment:
             MONGO_INITDB_ROOT_USERNAME: root
             MONGO_INITDB_ROOT_PASSWORD: root
-            
+        volumes:
+            - ./db:/data/db
     mongo-express:
         image: mongo-express
         restart: always
