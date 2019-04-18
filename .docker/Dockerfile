@@ -11,17 +11,12 @@ RUN apt-get -y dist-upgrade
 
 RUN apt-get -y install git wget curl software-properties-common ca-certificates
 
-#Install Mongo Shell
-RUN echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.0.list
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
-RUN apt-get install -y mongodb-org-shell
-
 #install node
-RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get -y install nodejs
 #copy laravel conf
 
-COPY ../conf/laravel.conf /etc/apache2/sites-available/laravel.conf
+COPY laravel.conf /etc/apache2/sites-available/laravel.conf
 #run the script
 RUN apt-get -y install unzip php libapache2-mod-php php-common php-mbstring php-xmlrpc php-soap php-gd php-xml php-cli php-zip php-mongodb php-pear php-xdebug php-dev nano
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
