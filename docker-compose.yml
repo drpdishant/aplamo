@@ -8,8 +8,8 @@ services:
         - 8000:80
         - 8443:443
         volumes:
-        - ./app:/var/www/html/app
-        - ./conf/laravel.conf:/etc/apache2/sites-available/laravel.conf
+        #- ./app:/var/www/html
+        #- ./conf/laravel.conf:/etc/apache2/sites-available/laravel.conf
 
     mongo:
         image: mongo
@@ -23,7 +23,7 @@ services:
         image: mongo-express
         restart: always
         ports:
-            - 8082:8081
+            - 8081:8081
         environment:
             ME_CONFIG_MONGODB_ADMINUSERNAME: root
             ME_CONFIG_MONGODB_ADMINPASSWORD: root 
