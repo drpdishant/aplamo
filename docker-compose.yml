@@ -7,7 +7,7 @@ services:
         ports:
         - 8000:80
         - 8443:443
-        volumes:
+        #volumes:
         #- ./app:/var/www/html
         #- ./conf/laravel.conf:/etc/apache2/sites-available/laravel.conf
 

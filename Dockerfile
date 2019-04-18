@@ -13,7 +13,7 @@ RUN apt-get -y install git wget curl
 
 #run the script
 RUN apt-get install -y php php-{mongodb,pear,xdebug,dev,xml,xmlrpc,soap,cli,common,bcmath,bz2,intl,gd,mbstring,mcrypt,mysql,zip}
-RUN apt-get -y unzip libapache2-mod-php nano
+RUN apt-get -y apache2 unzip libapache2-mod-php nano
 
 #RUN apt-get -y install unzip php libapache2-mod-php php-common php-mbstring php-xmlrpc php-soap php-gd php-xml php-cli php-zip php-mongodb php-pear php-xdebug php-dev nano
 
