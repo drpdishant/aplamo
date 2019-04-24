@@ -28,6 +28,7 @@ RUN service apache2 restart
 COPY init.sh /init.sh
 RUN chmod +x /init.sh
 
+EXPOSE 8000-8100
 EXPOSE 80
 EXPOSE 443
 

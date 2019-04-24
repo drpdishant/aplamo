@@ -1,29 +1,15 @@
-version: "3"
-
+version: '2.0'
 services:
-    laravel:
-        image: drpdishant/php-laravel-mongo:latest
-        restart: always
-        ports:
-        - 8000:80
-        - 8443:443
-        #volumes:
-        #- ./app:/var/www/html
-        #- ./conf/laravel.conf:/etc/apache2/sites-available/laravel.conf
-
-    mongo:
-        image: mongo
-        restart: always
-        environment:
-            MONGO_INITDB_ROOT_USERNAME: root
-            MONGO_INITDB_ROOT_PASSWORD: root
-        volumes:
-            - ./db:/data/db
-    mongo-express:
-        image: mongo-express
-        restart: always
-        ports:
-            - 8081:8081
-        environment:
-            ME_CONFIG_MONGODB_ADMINUSERNAME: root
-            ME_CONFIG_MONGODB_ADMINPASSWORD: root 
+    PWA:
+    image: drpdishant/php-laravel-mongo
+    volumes:
+      - ./web:/var/www/html:rw
+      - ./logs/apache2:/var/log/apache2:rw
+      - ./conf/php.ini:/etc/php/7.2/apache2/php.ini
+      - ./conf/vhost.conf:/etc/apache2/sites-available/vhost.conf
+      - ./conf/vhost.conf:/etc/apache2/sites-enabled/vhost.conf
+      - ./conf/ssl:/etc/apache2/ssl
+      - ./conf/opcache-recommended.ini:/usr/local/etc/php/conf.d/opcache-recommended.ini
+      - $HOME/.ssh:/root/.ssh
+      - ./home:/root
+- ./conf/ssmtp.conf:/etc/ssmtp/ssmtp.conf
