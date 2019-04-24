@@ -16,7 +16,6 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get -y install nodejs
 #copy laravel conf
 
-COPY laravel.conf /etc/apache2/sites-available/laravel.conf
 #run the script
 RUN apt-get -y install unzip php libapache2-mod-php php-common php-mbstring php-xmlrpc php-soap php-gd php-xml php-cli php-zip php-mongodb php-pear php-xdebug php-dev nano
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -24,8 +23,6 @@ RUN pecl install mongodb
 RUN echo "extension=mongodb.so" >> /etc/php/7.2/apache2/php.ini
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 777 /var/www/html
-RUN a2dissite 000-default.conf
-RUN a2ensite laravel.conf
 RUN a2enmod rewrite
 RUN service apache2 restart
 COPY init.sh /init.sh
