@@ -18,10 +18,11 @@ RUN apt-get -y install nodejs
 
 #run the script
 
-RUN apt-get -y install unzip php libapache2-mod-php php-common php-mbstring php-xmlrpc php-soap php-gd php-xml php-cli php-zip php-mongodb php-pear php-xdebug php-dev nano
+RUN apt-get -y install unzip php libapache2-mod-php php-common php-mbstring php-xmlrpc php-soap php-gd php-xml php-cli php-zip php-mongodb php-pear php-xdebug php-dev php-gmp nano
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN pecl install mongodb
 RUN echo "extension=mongodb.so" >> /etc/php/7.2/apache2/php.ini
+RUN echo "extension=php_gmp.so" >> /etc/php/7.2/apache2/php.ini
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 777 /var/www/html
 RUN rm -rf /etc/apache2/sites-available/*
