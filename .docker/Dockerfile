@@ -7,7 +7,7 @@ RUN apt-get update
 RUN apt-get -y install apt-utils
 RUN apt-get -y dist-upgrade
 #Install dependencies
-1
+
 RUN apt-get -y install git wget curl software-properties-common ca-certificates
 
 #install node
