@@ -6,8 +6,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get -y install apt-utils
 RUN apt-get -y dist-upgrade
-#install dependencies
-
+#Install dependencies
+1
 RUN apt-get -y install git wget curl software-properties-common ca-certificates
 
 #install node
@@ -16,7 +16,8 @@ RUN apt-get -y install nodejs
 
 #run the script
 
-RUN apt-get -y install unzip php libapache2-mod-php php-common php-mbstring php-xmlrpc php-soap php-gd php-xml php-cli php-zip php-mongodb php-pear php-xdebug php-dev php-gmp nano
+#RUN apt-get -y install unzip php libapache2-mod-php php-common php-mbstring php-xmlrpc php-soap php-gd php-xml php-cli php-zip php-mongodb php-pear php-xdebug php-dev php-gmp nano
+RUN apt-get -y install unzip php libapache2-mod-php php-* nano
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 777 /var/www/html
